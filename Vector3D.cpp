@@ -70,3 +70,62 @@ std::istream & operator >> (std::istream & iStream, Vector3D & vector)
 	 oStream << "(" << vector.getX() << "," << vector.getY() << "," << vector.getZ() << ") ";
 	return oStream;
 }
+
+ int char_to_num(char op[])
+ {
+	 int len = strlen(op) + 1;
+	 int num = 0;
+	 for (int i = 0; i < len - 1; i++)
+	 {
+		 if (op[i] == '*') continue;
+		 int ch = op[i] - '0';
+		 num = num * 10 + ch;
+	 }
+	 return num;
+ }
+
+ Vector3D add_vectors(Vector3D vec[], int n)
+ {
+	 Vector3D temp;
+	 for (int i = 0; i < n; i++)
+	 {
+		 temp = temp + vec[i];
+	 }
+	 return temp;
+ }
+
+ Vector3D substract_vectors(Vector3D vec[], int n)
+ {
+	 Vector3D temp = vec[0];
+	 for (int i = 1; i < n; i++)
+	 {
+		 temp = temp - vec[i];
+	 }
+	 return temp;
+ }
+
+ void negate(Vector3D vec[], int n)
+ {
+	 for (int i = 0; i < n; i++)
+	 {
+		 cout << -vec[i];
+	 }
+ }
+
+ void multNUM(Vector3D vec[], int n, char num[])
+ {
+	 int number = char_to_num(num);
+	 for (int i = 0; i < n; i++)
+	 {
+		 cout << vec[i] * number;
+	 }
+ }
+
+ void NUMmult(Vector3D vec[], int n, char num[])
+ {
+	 int number = char_to_num(num);
+	 for (int i = 0; i < n; i++)
+	 {
+		 cout << number * vec[i];
+	 }
+ }
